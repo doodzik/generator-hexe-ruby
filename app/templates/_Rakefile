@@ -1,0 +1,21 @@
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'adapters'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), 'contracts'))
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+
+require File.expand_path('../environment', __FILE__)
+require 'rake'
+
+Dir["#{ENV['BASEDIR']}/tasks/*.rb"].map &method(:require)
+
+task :environment do
+  ENV['RACK_ENV'] ||= 'development'
+  require File.expand_path('../environment', __FILE__)
+end
+
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop)
+
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+task default: [:rubocop, :spec]
