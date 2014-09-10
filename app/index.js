@@ -9,70 +9,41 @@ var spawn = require('child_process').spawn;
 
 var RubyHexeGenerator = yeoman.generators.Base.extend({
   init: function () {
-    this.pkg = require('../../package.json');
-
+    this.service = this.args[0];
+    this.Service = this.service.charAt(0).toUpperCase() + this.service.slice(1);
+/*
     this.on('end', function () {
-      if (!this.options['skip-install']) {
-        var bundle = spawn("bundle", ["install"]);
+      var bundle = spawn("bundle", ["install"]);
 
-        bundle.stdout.on('data', function (data) {
-          console.log(data.toString());
-        });
+      bundle.stdout.on('data', function (data) {
+        console.log(data.toString());
+      });
 
-        bundle.stderr.on('data', function (data) {
-          console.log('stderr: ' + data);
-        });
-      }
+      bundle.stderr.on('data', function (data) {
+        console.log('stderr: ' + data);
+      });
     });
-  },
-
-  askFor: function() {
-    var done = this.async();
-
-    // have Yeoman greet the user
-    console.log(this.yeoman);
-
-    var prompts = [{
-        name: 'serviceName',
-        message: 'What is your service\'s name ?'
-    }];
-
-    this.prompt(prompts, function (props) {
-        this.service = props.serviceName;
-        this.Service = props.serviceName.charAt(0).toUpperCase() + props.serviceName.slice(1);
-
-        done();
-    }.bind(this));
+*/
   },
 
   structure: function () {
-    this.mkdir('adapters/');
-    this.mkdir('contracts/');
-    this.mkdir('lib/');
-    this.mkdir('tasks/');
-    this.mkdir('tmp/');
-    this.mkdir('spec/');
-    this.mkdir('spec/adapters/');
-    this.mkdir('spec/contracts/');
-    this.mkdir('spec/tasks/');
-    this.mkdir('spec/lib/');
+    this.mkdir(this.Service + '/adapters/');
+    this.mkdir(this.Service + '/contracts/');
+    this.mkdir(this.Service + '/lib/');
+    this.mkdir(this.Service + '/tasks/');
+    this.mkdir(this.Service + '/tmp/');
+    this.mkdir(this.Service + '/spec/adapters/');
+    this.mkdir(this.Service + '/spec/contracts/');
+    this.mkdir(this.Service + '/spec/tasks/');
+    this.mkdir(this.Service + '/spec/lib/');
   },
 
   createFiles: function () {
-    //TODO ask for each module
-    var context = {
-      service: this.service,
-      Service: this.Service
-    }
-
-    //contracts
-    this.src.copy('_enviroment.rb', 'enviroment.rb');
-    this.src.copy('_Gemfile', 'Gemfile');
-    this.src.copy('_Guardfile', 'Guardfile');
-    this.src.copy('_Rakefile', 'Rakefile');
-
-  }
-
+    this.copy('_enviroment.rb', this.Service +  '/enviroment.rb');
+    this.copy('_Gemfile', this.Service +  '/Gemfile');
+    this.copy('_Guardfile', this.Service +  '/Guardfile');
+    this.copy('_Rakefile', this.Service +  '/Rakefile');
+  },
 
 });
 
