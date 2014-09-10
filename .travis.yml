@@ -3,4 +3,4 @@ node_js:
   - '0.10'
 before_install:
   - currentfolder=${PWD##*/}
-  - if [ "$currentfolder" != 'generator_hexe_ruby' ]; then cd .. && eval "mv $currentfolder generator_hexe_ruby" && cd generator_hexe_ruby; fi
+  - if [ "$currentfolder" != 'generator-hexe-ruby' ]; then cd .. && eval "mv $currentfolder generator-hexe-ruby" && cd generator-hexe-ruby; fi
