@@ -11,6 +11,7 @@ var RubyHexeGenerator = yeoman.generators.Base.extend({
   init: function () {
     this.service = this.args[0];
     this.Service = this.service.charAt(0).toUpperCase() + this.service.slice(1);
+    //TODO bundle install
 /*
     this.on('end', function () {
       var bundle = spawn("bundle", ["install"]);
@@ -39,7 +40,7 @@ var RubyHexeGenerator = yeoman.generators.Base.extend({
   },
 
   createFiles: function () {
-    this.copy('_enviroment.rb', this.Service +  '/enviroment.rb');
+    this.copy('_environment.rb', this.Service +  '/environment.rb');
     this.copy('_Gemfile', this.Service +  '/Gemfile');
     this.copy('_Guardfile', this.Service +  '/Guardfile');
     this.copy('_Rakefile', this.Service +  '/Rakefile');
