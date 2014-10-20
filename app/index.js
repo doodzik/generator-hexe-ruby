@@ -28,22 +28,22 @@ var RubyHexeGenerator = yeoman.generators.Base.extend({
   },
 
   structure: function () {
-    this.mkdir(this.Service + '/adapters/');
-    this.mkdir(this.Service + '/contracts/');
-    this.mkdir(this.Service + '/lib/');
-    this.mkdir(this.Service + '/tasks/');
-    this.mkdir(this.Service + '/tmp/');
-    this.mkdir(this.Service + '/spec/adapters/');
-    this.mkdir(this.Service + '/spec/contracts/');
-    this.mkdir(this.Service + '/spec/tasks/');
-    this.mkdir(this.Service + '/spec/lib/');
+    this.mkdir(this.service + '/adapters/');
+    this.mkdir(this.service + '/contracts/');
+    this.mkdir(this.service + '/lib/');
+    this.mkdir(this.service + '/tasks/');
+    this.mkdir(this.service + '/tmp/');
+    this.mkdir(this.service + '/spec/adapters/');
+    this.mkdir(this.service + '/spec/contracts/');
+    this.mkdir(this.service + '/spec/tasks/');
+    this.mkdir(this.service + '/spec/lib/');
   },
 
   createFiles: function () {
-    this.copy('_environment.rb', this.Service +  '/environment.rb');
-    this.copy('_Gemfile', this.Service +  '/Gemfile');
-    this.copy('_Guardfile', this.Service +  '/Guardfile');
-    this.copy('_Rakefile', this.Service +  '/Rakefile');
+    this.copy('_enviroment.rb', this.service +  '/environment.rb');
+    this.copy('_Gemfile', this.service +  '/Gemfile');
+    this.copy('_Guardfile', this.service +  '/Guardfile');
+    this.copy('_Rakefile', this.service +  '/Rakefile');
   },
 
 });
