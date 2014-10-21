@@ -44,6 +44,7 @@ var RubyHexeGenerator = yeoman.generators.Base.extend({
     this.copy('_Gemfile', this.service +  '/Gemfile');
     this.copy('_Guardfile', this.service +  '/Guardfile');
     this.copy('_Rakefile', this.service +  '/Rakefile');
+    this.copy('_support.rb', this.service +  '/support.rb');
   },
 
 });
